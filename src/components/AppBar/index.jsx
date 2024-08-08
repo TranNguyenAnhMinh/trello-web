@@ -23,23 +23,42 @@ function AppBar() {
         height: (theme) => theme.trelloCustom.appBarHeight,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        gap: 2,
+        overflowX: 'auto',
+        bgcolor: (theme) => theme.palette.mode === 'dark' ? '#2c3e50' : '#1565c0'
       }}>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <AppIcon sx={{ color: 'primary.main' }} />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}><SvgIcon component={TrelloIcon} inheritViewBox sx={{ color: 'primary.main' }} />
-            <Typography variant='span' sx={{ fontSize: '1.2rem', fontWeight: 'blod', display: 'flex', alignItems: 'center', color: 'primary.main' }}
+          <AppIcon sx={{ color: 'white' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}><SvgIcon component={TrelloIcon} inheritViewBox sx={{ color: 'white' }} />
+            <Typography variant='span' sx={{ fontSize: '1.2rem', fontWeight: 'blod', display: 'flex', alignItems: 'center', color: 'white' }}
             >Trello</Typography>
           </Box>
-          <WorkSpaces />
-          <Recent />
-          <Started />
-          <Template />
-          <Button variant="outlined">Create</Button>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+            <WorkSpaces />
+            <Recent />
+            <Started />
+            <Template />
+            <Button
+              sx={{
+                color: 'white',
+                border: 'none',
+                '&:hover': { border: 'none' }
+              }}
+              variant="outlined">Create</Button>
+          </Box>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <TextField id="outlined-search" label="Search..." type="search" size="small" />
+          <TextField 
+          id="outlined-search" 
+          label="Search..."
+           type="search" 
+           size="small"
+           sx={{ 
+            minWidth: '120px' 
+
+           }} />
           <ModeSelect />
           <Tooltip title="Notification">
             <Badge color="secondary" variant="dot" sx={{ cursor: 'pointer' }}>
@@ -49,7 +68,7 @@ function AppBar() {
           <Tooltip title="Notification" sx={{ cursor: 'pointer' }}>
             <HelpOutlineIcon />
           </Tooltip>
-          <Profiles/>
+          <Profiles />
         </Box>
       </Box>
     </div>
