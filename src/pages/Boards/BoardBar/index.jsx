@@ -7,17 +7,18 @@ import BoltIcon from '@mui/icons-material/Bolt'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import Avatar from '@mui/material/Avatar'
 import AvatarGroup from '@mui/material/AvatarGroup'
-import { Tooltip } from '@mui/material'
+import { colors, Tooltip } from '@mui/material'
 import Button from '@mui/material/Button'
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1'
+import theme from '~/theme'
 const MENU_STYLE = {
-  color: 'primary.main',
-  bgcolor: 'white',
+  color: 'white',
+  bgcolor: 'transparent',
   border: 'none',
   paddingX: '5px',
   borderRadius: '4px',
   '& .MuiSvgIcon-root': {
-    color: 'primary.main'
+    color: 'white'
   },
   '&:hover': {
     bgcolor: 'primary.50'
@@ -30,18 +31,21 @@ function BoardBar() {
       alignItems: 'center',
       justifyContent: 'space-between',
       gap: 2,
-      overflowX: 'auto'
+      overflowX: 'auto',
+      paddingX: 2,
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
+      borderBottom: '1px solid #00bfa5'
     }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Chip
           sx={{
-            color: 'primary.main',
-            bgcolor: 'white',
+            color: 'white',
+            bgcolor: 'transparent',
             border: 'none',
             paddingX: '5px',
             borderRadius: '4px',
             '& .MuiSvgIcon-root': {
-              color: 'primary.main'
+              color: 'white'
             },
             '&:hover': {
               bgcolor: 'primary.50'
@@ -73,13 +77,17 @@ function BoardBar() {
       </Box>
 
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Button variant="outlined" startIcon={<PersonAddAlt1Icon />}>Invite</Button>
+        <Button sx={{ color: 'white', borderColor: 'white', '&:hover': { borderColor: 'white' } }} variant="outlined" startIcon={<PersonAddAlt1Icon />}>Invite</Button>
         <AvatarGroup max={5}
           sx={{
+            gap: '8px',
             '& .MuiAvatar-root': {
               width: 34,
               height: 34,
-              fontSize: 16
+              fontSize: 16,
+              border: 'none',
+              color: 'white',
+              '&:first-of-type': { bgcolor: '#a4b0be' }
             }
           }}>
           <Tooltip title="minn">
