@@ -10,7 +10,7 @@ import AvatarGroup from '@mui/material/AvatarGroup'
 import { colors, Tooltip } from '@mui/material'
 import Button from '@mui/material/Button'
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1'
-import theme from '~/theme'
+import { capitalizeFirstLetter } from '~/utils/formatter'
 const MENU_STYLE = {
   color: 'white',
   bgcolor: 'transparent',
@@ -24,9 +24,12 @@ const MENU_STYLE = {
     bgcolor: 'primary.50'
   }
 }
-function BoardBar() {
+function BoardBar({board}) {
+  // const board = props.board
   return (
     <Box sx={{
+      width:'100%',
+      height:(theme) => theme.trelloCustom.boardBarHeight,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -34,7 +37,7 @@ function BoardBar() {
       overflowX: 'auto',
       paddingX: 2,
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
-      borderBottom: '1px solid #00bfa5'
+
     }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Chip
@@ -52,12 +55,12 @@ function BoardBar() {
             }
           }}
           icon={<DashboardIcon />}
-          label="MERN Stack Board"
+          label={board?.title}
           clickable />
         <Chip
           sx={MENU_STYLE}
           icon={<VpnLockIcon />}
-          label="Public/Private Workspace"
+          label={capitalizeFirstLetter(board?.type)}
           clickable />
         <Chip
           sx={MENU_STYLE}
