@@ -22,7 +22,7 @@ function Card({ card }) {
     transform: CSS.Translate.toString(transform),
     transition,
     opacity: isDragging ? 0.5 : undefined,
-    border: isDragging ? '1px solid #2ecc71' : undefined,
+    border: isDragging ? '1px solid #2ecc71' : undefined
   }
 
   const shouldShowCardActions = () => {
@@ -41,6 +41,8 @@ function Card({ card }) {
           display: 'flex',
           flexDirection: 'column', // Aligns children vertically
           justifyContent: 'space-between',
+          border: '1px solid trasparent',
+          '&:hover': { borderColor: (theme) => theme.palette.primary.main }
         }}>
         {card?.cover &&
           <CardMedia
@@ -70,7 +72,7 @@ function Card({ card }) {
         boxShadow: '0 1px 1px rgba(0, 0, 0, 0.2)'
       }}>
       </MuiCard>
-    </Box>
+    </Box >
   )
 }
 

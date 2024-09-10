@@ -24,12 +24,12 @@ const MENU_STYLE = {
     bgcolor: 'primary.50'
   }
 }
-function BoardBar({board}) {
+function BoardBar({ board }) {
   // const board = props.board
   return (
     <Box sx={{
-      width:'100%',
-      height:(theme) => theme.trelloCustom.boardBarHeight,
+      width: '100%',
+      height: (theme) => theme.trelloCustom.boardBarHeight,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -40,23 +40,24 @@ function BoardBar({board}) {
 
     }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Chip
-          sx={{
-            color: 'white',
-            bgcolor: 'transparent',
-            border: 'none',
-            paddingX: '5px',
-            borderRadius: '4px',
-            '& .MuiSvgIcon-root': {
-              color: 'white'
-            },
-            '&:hover': {
-              bgcolor: 'primary.50'
-            }
-          }}
-          icon={<DashboardIcon />}
-          label={board?.title}
-          clickable />
+        <Tooltip title={board?.description}>
+          <Chip
+            sx={{
+              color: 'white',
+              bgcolor: 'transparent',
+              border: 'none',
+              paddingX: '5px',
+              borderRadius: '4px',
+              '& .MuiSvgIcon-root': {
+                color: 'white'
+              },
+              '&:hover': {
+                bgcolor: 'primary.50'
+              }
+            }}
+            icon={<DashboardIcon />}
+            label={board?.title}
+            clickable /> </Tooltip>
         <Chip
           sx={MENU_STYLE}
           icon={<VpnLockIcon />}
